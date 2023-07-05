@@ -100,5 +100,43 @@ class UserTest extends TestCase
 
     }
 
+    public function test_LogoutSinToken()
+    {
+        $response = $this->get('/api/logout');
 
+        $response->assertStatus(500);
+    }
+
+    public function test_LogoutConTokenInvalido()
+    {
+        $response = $this->get('/api/logout',[
+            [ "Authorization" => "Bearer " . Str::Random(40)]
+        ]);
+
+        $response->assertStatus(500);
+    }
+
+    public function test_LogoutConTokenValido()
+    {
+        $tokenResponse = $this->post('/oauth/token',[
+            "username" => $this -> userName,
+            "password" => $this -> userPassword,
+            "grant_type" => "password",
+            "client_id" => $this -> clientId,
+            "client_secret" => $this -> clientSecret
+        ]);
+
+        $token = json_decode($tokenResponse -> content(),true);
+
+        $response = $this->get('/api/logout',
+            [ "Authorization" => "Bearer " . $token ['access_token']]
+        );
+
+        $response->assertStatus(200);
+
+        $response->assertJsonFragment(
+            ['message' => 'Token Revoked']
+        );
+
+    }
 }
