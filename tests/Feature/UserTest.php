@@ -80,4 +80,25 @@ class UserTest extends TestCase
         $response->assertStatus(500);
     }
 
+    public function test_ValidarTokenConTokenValido()
+    {
+        $tokenResponse = $this->post('/oauth/token',[
+            "username" => $this -> userName,
+            "password" => $this -> userPassword,
+            "grant_type" => "password",
+            "client_id" => $this -> clientId,
+            "client_secret" => $this -> clientSecret
+        ]);
+
+        $token = json_decode($tokenResponse -> content(),true);
+
+        $response = $this->get('/api/validate',
+            [ "Authorization" => "Bearer " . $token['access_token']]
+        );
+
+        $response->assertStatus(200);
+
+    }
+
+
 }
