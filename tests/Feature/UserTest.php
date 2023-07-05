@@ -63,4 +63,21 @@ class UserTest extends TestCase
             "message" => "Client authentication failed"
         ]);
     }
+
+    public function test_ValidarTokenSinEnviarToken()
+    {
+        $response = $this->get('/api/validate');
+
+        $response->assertStatus(500);
+    }
+
+    public function test_ValidarTokenConTokenInvalido()
+    {
+        $response = $this->get('/api/validate',[
+            [ "Authorization" => "Bearer " . Str::Random(40)]
+        ]);
+
+        $response->assertStatus(500);
+    }
+
 }
