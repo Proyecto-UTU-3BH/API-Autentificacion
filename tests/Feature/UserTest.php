@@ -15,11 +15,11 @@ class UserTest extends TestCase
      * @return void
      */
     
-    private $clientId = 200;
-    private $clientSecret = "wsBa0mp4jwSTYssUGHX5xoqD9IC0X95Gfpg0w3uY";
+    private $clientId = 1;
+    private $clientSecret = "x21mzlq0ijQMy6IewvJcp5X9pzxjo79rfrldaboD";
 
-    private $userName = "usuario@email.com";
-    private $userPassword = "123456";
+    private $userName = "transito@adinet.com";
+    private $userPassword = "12345678";
 
     public function test_ObtenerTokenConClientIdValido()
     {
