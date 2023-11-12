@@ -14,16 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        /*\App\Models\User::factory(10)->create();
         \App\Models\User::factory(1)->create([
             "name" => "usuario",
             "email" => "usuario@email.com"
-        ]);
+        ]);*/
 
         Client::create([
-            'id' => 200,
+            'id' => 1,
             'name' => 'Tests',
-            'secret' => "wsBa0mp4jwSTYssUGHX5xoqD9IC0X95Gfpg0w3uY",
+            'secret' => "x21mzlq0ijQMy6IewvJcp5X9pzxjo79rfrldaboD",
             'redirect' => 'http://localhost',
             'provider' => 'users',
             'password_client' => true,
