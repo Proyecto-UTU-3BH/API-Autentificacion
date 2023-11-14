@@ -16,11 +16,16 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => Hash::make("123456"), 
-            'remember_token' => Str::random(10),
+            'usuario' => $this-> faker->email(),
+            'ci' => $this-> faker->numerify('########'),
+            'password' => Hash::make($this-> faker->password),
+            'primer_nombre' => $this-> faker->firstName(),
+            'primer_apellido' => $this-> faker->lastname(),
+            'segundo_apellido' => $this-> faker->optional()->lastname(),
+            'calle' => $this-> faker->streetName(),
+            'numero_de_puerta' => $this-> faker->buildingNumber(),
+            'tipo' => $this-> faker-> randomElement($array = array ('chofer','funcionario')),
+            'telefono' => $this-> faker-> numberBetween($min = 94000000, $max = 94999999),
         ];
     }
 
