@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             "password" =>Hash::make("12345678")
         ]);
 
-       /* Client::create([
+       Client::create([
             'id' => 1,
             'name' => 'Tests',
             'secret' => "x21mzlq0ijQMy6IewvJcp5X9pzxjo79rfrldaboD",
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'password_client' => true,
             'personal_access_client' => false,
             'revoked' => false
-        ]);*/
+        ]);
 
     }
 }
